@@ -27,9 +27,11 @@ def get_ips():
 def count_ips(ip_list):
 
     ip_counts = Counter(ip_list)
-    pprint(ip_counts)
+    
+    for k in ip_counts:
+        print k, ip_counts[k]
 
 
 
-
-count_ips(get_ips())
+if __name__ == "__main__":
+    count_ips(get_ips())
