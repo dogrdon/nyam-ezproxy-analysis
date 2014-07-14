@@ -3,6 +3,8 @@
 import os
 import sys
 import re
+import math
+import operator
 from collections import Counter
 from pprint import pprint
 
@@ -35,9 +37,18 @@ def get_ips():
 def count_ips(ip_list):
 
     ip_counts = Counter(ip_list)
+
+    ip_counts_sorted = sorted(ip_counts.items(), key=lambda x: x[1], reverse=True)
     
-    for k in ip_counts:
-        print k, ip_counts[k]
+    total_req = sum(ip_counts.values())
+
+    print '%s total requests over the last year' % (total_req)
+    print 'ip' + '\t' + 'requests' + '\t' + 'percentage'
+    for k, v in ip_counts_sorted:
+        raw_perc = float(v)/total_req*100
+        perc = round(raw_perc, 2)
+
+        print k + '\t' + str(v) + '\t' + str(perc)+'%'
 
 
 
