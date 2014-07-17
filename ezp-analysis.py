@@ -54,12 +54,12 @@ def main():
                 
                 ipaddr = re.search(r'127\.\d+?\.\d+?\.\d+?\s-', line)
                 if ipaddr:
-                    oncampus = oncampus + 1 #this counts all on-campus connections from 10.x.x.x
+                    oncampus = oncampus + 1 #this counts all on-campus connections from 127.x.x.x
                 else:
                     offcampus = offcampus + 1 #this counts all other connections (off-campus)
                     
-                libip = re.search(r'10\.1\.11|2\.\d+?\s-', line)
-                    #this counts all connections from the library (10.1.11... or 10.1.12...)
+                libip = re.search(r'127\.16\.2|3\.\d+?\s-', line)
+                    #this counts all connections from the library (127.16.2... or 127.16.3...)
                 if libip:
                     libraryconnections = libraryconnections + 1
                     
